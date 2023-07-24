@@ -168,29 +168,29 @@
 // Map - to store key/value pair
 // - key should not necesarilly be a string
 
-let map = new Map();
+// let map = new Map();
 
-map.set("name", "John");
+// map.set("name", "John");
 
-map.set(true, 1);
+// map.set(true, 1);
 
-map.set(201, "UID");
+// map.set(201, "UID");
 
-console.log(map.size);
+// console.log(map.size);
 
 // console.log(map.get("name"));
 
-for (let value of map.values()) {
-  console.log(value);
-}
+// for (let value of map.values()) {
+//   console.log(value);
+// }
 
-for (let key of map.keys()) {
-  console.log(key);
-}
+// for (let key of map.keys()) {
+//   console.log(key);
+// }
 
-for (let [key, value] of map.entries()) {
-  console.log(`${key} -> ${value}`);
-}
+// for (let [key, value] of map.entries()) {
+//   console.log(`${key} -> ${value}`);
+// }
 
 // Set - stores uniques values only
 
@@ -203,3 +203,58 @@ for (let [key, value] of map.entries()) {
 // set.add("Jack");
 
 // console.log(set.size);
+
+// Default Parameter : will take place if user does not supply the value
+// function addAtBeginning(val, arr = []) {
+//   return [val, ...arr];
+// }
+
+// console.log(addAtBeginning(101, undefined));
+
+// CLASSES
+
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+  getDetails() {
+    return this.name;
+  }
+}
+
+class Student extends Person {
+  #courseEnrolled;
+  static NumberOfStudent = 0;
+
+  // NO METHOD / CONSTRUCTOR OVERLOADING
+  // constructor() {
+  //     console.log("No Args Constructor")
+  // }
+  constructor(studId, studName) {
+    super(studName);
+    this.studId = studId;
+    // this.studName = studName;
+    Student.NumberOfStudent++;
+  }
+  get courseEnrolled() {
+    return this.#courseEnrolled;
+  }
+  set courseEnrolled(value) {
+    this.#courseEnrolled = value;
+  }
+
+  getDetails() {
+    // return this.studId + " - " + this.studName;
+    return this.studId + " -> " + super.getDetails();
+  }
+}
+
+let john = new Student("S001", "John Doe");
+console.log(john.getDetails());
+john.courseEnrolled = "React";
+console.log("Enrolled Course : ", john.courseEnrolled);
+
+let jenny = new Student("S002", "Jenny Doe");
+console.log("Number of Student Enrolled: ", Student.NumberOfStudent);
+
+let jack = new Student();
