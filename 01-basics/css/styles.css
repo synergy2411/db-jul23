@@ -1,0 +1,50 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header nav ul {
+  list-style: none;
+  text-align: center;
+}
+
+header nav ul li {
+  display: inline-block;
+  padding: 10px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: goldenrod;
+}
+
+header nav ul li a:hover {
+  color: gold;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Main Container */
+
+.main-container {
+  display: flex;
+}
+
+aside ul {
+  list-style: none;
+}
+
+aside ul li {
+  margin-bottom: 8px;
+}
+
+aside ul li a {
+  text-decoration: none;
+  color: grey;
+}
+
+aside h6 {
+  text-align: center;
+  padding: 8px;
+  font-size: 1.1rem;
+  margin: 0;
+}
