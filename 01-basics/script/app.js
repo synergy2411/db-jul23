@@ -38,7 +38,7 @@
 // console.log(splicedArray);
 
 // FUNCTIONS
-// function declaration
+// function declaration - can be hoisted
 
 // console.log("Sum : ", add(2, 4));
 
@@ -46,7 +46,7 @@
 //   return n1 + n2;
 // }
 
-// function expression
+// function expression - can't be hoisted
 
 // const mul = function (n1, n2) {
 //   return n1 * n2;
@@ -62,16 +62,57 @@
 
 // console.log("Square : ", square(3));
 
-function mystry() {
-  var chooseNumber = function () {
-    return 7;
-  };
-  return chooseNumber;
-  var chooseNumber = function () {
-    return 12;
+// function mystry() {
+//   var chooseNumber = function () {
+//     return 7;
+//   };
+//   return chooseNumber;
+//   var chooseNumber = function () {
+//     return 12;
+//   };
+// }
+
+// const nestedFn = mystry();
+
+// console.log(nestedFn());
+
+// Closure : process of binding the outer scope variable to the nested function
+
+// function mystry() {
+//   let x = 101;
+//   return function () {
+//     return ++x;
+//   };
+// }
+
+// const nestedFn = mystry();
+
+// console.log(nestedFn()); // 102
+// console.log(nestedFn()); // 103
+// console.log(nestedFn()); // 104
+
+function buildTicket(transport) {
+  let numOfPassengers = 0;
+
+  return function (name) {
+    return (
+      "Hello Mr/s. " +
+      name +
+      "!\n" +
+      "You are going via " +
+      transport +
+      ".\n" +
+      "Your ticket ID is : " +
+      ++numOfPassengers
+    );
   };
 }
 
-const nestedFn = mystry();
+let shipFn = buildTicket("Ship");
 
-console.log(nestedFn());
+console.log(shipFn("John"));
+console.log(shipFn("Jenny"));
+
+const carFn = buildTicket("Car");
+
+console.log(carFn("Jack")); // ?
