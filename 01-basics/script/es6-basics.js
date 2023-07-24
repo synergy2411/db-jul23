@@ -213,48 +213,96 @@
 
 // CLASSES
 
-class Person {
-  constructor(name) {
-    this.name = name;
-  }
-  getDetails() {
-    return this.name;
+// class Person {
+//   constructor(name) {
+//     this.name = name;
+//   }
+//   getDetails() {
+//     return this.name;
+//   }
+// }
+
+// class Student extends Person {
+//   #courseEnrolled;
+//   static NumberOfStudent = 0;
+
+//   // NO METHOD / CONSTRUCTOR OVERLOADING
+//   // constructor() {
+//   //     console.log("No Args Constructor")
+//   // }
+//   constructor(studId, studName) {
+//     super(studName);
+//     this.studId = studId;
+//     // this.studName = studName;
+//     Student.NumberOfStudent++;
+//   }
+//   get courseEnrolled() {
+//     return this.#courseEnrolled;
+//   }
+//   set courseEnrolled(value) {
+//     this.#courseEnrolled = value;
+//   }
+
+//   getDetails() {
+//     // return this.studId + " - " + this.studName;
+//     return this.studId + " -> " + super.getDetails();
+//   }
+// }
+
+// let john = new Student("S001", "John Doe");
+// console.log(john.getDetails());
+// john.courseEnrolled = "React";
+// console.log("Enrolled Course : ", john.courseEnrolled);
+
+// let jenny = new Student("S002", "Jenny Doe");
+// console.log("Number of Student Enrolled: ", Student.NumberOfStudent);
+
+// let jack = new Student();
+
+// PROMISE API :
+// - Placeholder for future values
+// - Pending : yet to settle
+// - Resolved : success state
+// - Rejected : Failure state
+
+// produce
+function producePromise() {
+  let promise = new Promise(function (resolve, reject) {
+    setTimeout(() => {
+      //   resolve({ message: "SUCCESS" });
+      reject(new Error("Something bad happened!"));
+    }, 3000);
+  });
+  return promise;
+}
+
+// consume
+// - then().catch()
+// - Async...await Method
+
+async function consumePromise() {
+  try {
+    let response = await producePromise();
+    console.log("RESPONSE : ", response);
+  } catch (err) {
+    console.error(err);
   }
 }
 
-class Student extends Person {
-  #courseEnrolled;
-  static NumberOfStudent = 0;
+consumePromise();
 
-  // NO METHOD / CONSTRUCTOR OVERLOADING
-  // constructor() {
-  //     console.log("No Args Constructor")
-  // }
-  constructor(studId, studName) {
-    super(studName);
-    this.studId = studId;
-    // this.studName = studName;
-    Student.NumberOfStudent++;
-  }
-  get courseEnrolled() {
-    return this.#courseEnrolled;
-  }
-  set courseEnrolled(value) {
-    this.#courseEnrolled = value;
-  }
+// function consumePromise() {
+//   producePromise()
+//     .then(function (response) {
+//       console.log("First Then : ", response);
+//       return response.message;
+//     })
+//     .then(function (message) {
+//       console.log("Second Then : ", message);
+//     })
+//     .catch(function (error) {
+//       console.error(error);
+//     });
+// }
 
-  getDetails() {
-    // return this.studId + " - " + this.studName;
-    return this.studId + " -> " + super.getDetails();
-  }
-}
-
-let john = new Student("S001", "John Doe");
-console.log(john.getDetails());
-john.courseEnrolled = "React";
-console.log("Enrolled Course : ", john.courseEnrolled);
-
-let jenny = new Student("S002", "Jenny Doe");
-console.log("Number of Student Enrolled: ", Student.NumberOfStudent);
-
-let jack = new Student();
+// consumePromise();
