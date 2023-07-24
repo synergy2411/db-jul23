@@ -157,19 +157,25 @@
 // DOM API
 // ---------------
 
-window.onload = function () {
-  const btnAdd = document.querySelector("#btnAdd");
-  const txtItem = document.querySelector("#txtItem");
-  const liContainer = document.getElementById("list-container");
+// window.onload = function () {
+//   const btnAdd = document.querySelector("#btnAdd");
+//   const txtItem = document.querySelector("#txtItem");
+//   const liContainer = document.getElementById("list-container");
 
-  btnAdd.addEventListener("click", function (e) {
-    e.preventDefault();
-    if (txtItem.value.trim() === "") {
-      return;
-    }
-    const liElement = document.createElement("li");
-    liElement.innerHTML = txtItem.value;
-    liContainer.append(liElement);
-    txtItem.value = "";
-  });
-};
+//   const pElement = document.getElementById("result");
+
+//   txtItem.addEventListener("input", function (event) {
+//     pElement.innerHTML = event.target.value;
+//   });
+
+//   btnAdd.addEventListener("click", function (e) {
+//     e.preventDefault();
+//     if (txtItem.value.trim() === "") {
+//       return;
+//     }
+//     const liElement = document.createElement("li");
+//     liElement.innerHTML = txtItem.value;
+//     liContainer.append(liElement);
+//     txtItem.value = "";
+//   });
+// };
