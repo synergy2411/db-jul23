@@ -266,30 +266,30 @@
 // - Rejected : Failure state
 
 // produce
-function producePromise() {
-  let promise = new Promise(function (resolve, reject) {
-    setTimeout(() => {
-      //   resolve({ message: "SUCCESS" });
-      reject(new Error("Something bad happened!"));
-    }, 3000);
-  });
-  return promise;
-}
+// function producePromise() {
+//   let promise = new Promise(function (resolve, reject) {
+//     setTimeout(() => {
+//       //   resolve({ message: "SUCCESS" });
+//       reject(new Error("Something bad happened!"));
+//     }, 3000);
+//   });
+//   return promise;
+// }
 
-// consume
-// - then().catch()
-// - Async...await Method
+// // consume
+// // - then().catch()
+// // - Async...await Method
 
-async function consumePromise() {
-  try {
-    let response = await producePromise();
-    console.log("RESPONSE : ", response);
-  } catch (err) {
-    console.error(err);
-  }
-}
+// async function consumePromise() {
+//   try {
+//     let response = await producePromise();
+//     console.log("RESPONSE : ", response);
+//   } catch (err) {
+//     console.error(err);
+//   }
+// }
 
-consumePromise();
+// consumePromise();
 
 // function consumePromise() {
 //   producePromise()
@@ -306,3 +306,57 @@ consumePromise();
 // }
 
 // consumePromise();
+
+// function greet(err, message) {
+//   if (err) {
+//     console.error(err);
+//   }
+//   console.log("Hello for " + message);
+// }
+
+// function demoGreet(arr, cb) {
+//   if (arr.length > 2) {
+//     cb(null, "More than 2 elements");
+//   } else {
+//     cb(new Error("Very less elements"));
+//   }
+// }
+
+// demoGreet([1, 2], greet);
+
+// MAKE XHR (XMLHttpRequest) CALL - OLD WAY
+
+// window.onload = function () {
+//   const btnFetch = document.getElementById("btnFetch");
+//   btnFetch.addEventListener("click", function () {
+//     let xhr = new XMLHttpRequest();
+
+//     xhr.onreadystatechange = function () {
+//       if (this.readyState === 4 && this.status === 200) {
+//         console.log("RESULT : ", xhr.response);
+//       }
+//     };
+
+//     xhr.open("GET", "https://jsonplaceholder.typicode.com/posts", true);
+//     xhr.send();
+//   });
+// };
+
+// fetch() API : Promise
+window.onload = function () {
+  const btnFetch = document.getElementById("btnFetch");
+  const liContainer = document.getElementById("list-container");
+
+  btnFetch.addEventListener("click", function () {
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((response) => response.json())
+      .then((result) => {
+        result.forEach((post) => {
+          const liElement = document.createElement("li");
+          liElement.innerHTML = post.title;
+          liContainer.append(liElement);
+        });
+      })
+      .catch(console.error);
+  });
+};
