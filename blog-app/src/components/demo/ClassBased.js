@@ -24,6 +24,10 @@ class ClassBased extends React.Component {
     console.log("componentWillUnmount");
   }
 
+  shouldComponentUpdate() {
+    return true;
+  }
+
   render() {
     console.log("render");
     return (

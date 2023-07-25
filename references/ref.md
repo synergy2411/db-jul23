@@ -16,3 +16,9 @@
 
 - Stateful : comp have its own state
 - Stateless : comp does not have its own state
+
+# Class life cycle methods -
+
+- componentDidMount : useEffect(cb, [])
+- componentDidUpdate : useEffect(cb, [Dependency])
+- componentWillUnmount : useEffect(cb => CleanupFn, [Dependency])

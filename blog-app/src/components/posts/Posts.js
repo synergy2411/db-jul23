@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PostItem from "./postItem/PostItem";
 import AddPost from "./addPost/AddPost";
 
@@ -22,7 +22,22 @@ let INITIAL_POSTS = [
 // Stateless Component
 function Posts() {
   const [toggle, setToggle] = useState(false);
-  const [posts, setPosts] = useState(INITIAL_POSTS);
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        const response = await fetch(
+          "https://jsonplaceholder.typicode.com/posts"
+        );
+        const posts = await response.json();
+        setPosts(posts);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    fetchPosts();
+  }, []);
 
   const addPostClickHandler = () => {
     setToggle(!toggle); // Re-render the component
