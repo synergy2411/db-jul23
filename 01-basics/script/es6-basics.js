@@ -347,16 +347,40 @@ window.onload = function () {
   const btnFetch = document.getElementById("btnFetch");
   const liContainer = document.getElementById("list-container");
 
-  btnFetch.addEventListener("click", function () {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => response.json())
-      .then((result) => {
-        result.forEach((post) => {
-          const liElement = document.createElement("li");
-          liElement.innerHTML = post.title;
-          liContainer.append(liElement);
-        });
-      })
-      .catch(console.error);
+  const url = "https://jsonplaceholder.typicode.com/users";
+
+  btnFetch.addEventListener("click", async function () {
+    try {
+      const resp = await fetch(url);
+      const resp1 = await resp.json();
+
+      resp1.forEach((user) => {
+        const liElement = document.createElement("li");
+        liElement.innerHTML = user.name;
+        liContainer.append(liElement);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+
+    // fetch("https://jsonplaceholder.typicode.com/posts")
+    //   .then((response) => response.json())
+    //   .then((result) => {
+    //     result.forEach((post) => {
+    //       const liElement = document.createElement("li");
+    //       liElement.innerHTML = post.title;
+    //       liContainer.append(liElement);
+    //     });
+    //   })
+    //   .catch(console.error);
   });
+
+  // async function solve() {
+  //   const resp = await fetch(url);
+  //   const resp1 = await resp.json();
+  //   resp1.forEach((value) => {
+  //     console.log(value.name);
+  //   });
+  // }
+  // solve();
 };
