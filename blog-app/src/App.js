@@ -1,3 +1,4 @@
+import ClassBased from "./components/demo/ClassBased";
 import Posts from "./components/posts/Posts";
 
 function App() {
@@ -5,7 +6,8 @@ function App() {
     <div>
       <h1>App works!</h1>
       <hr />
-      <Posts />
+      <ClassBased />
+      {/* <Posts /> */}
     </div>
   );
 }

@@ -7,6 +7,13 @@ function PostItem(props) {
         </div>
         <div className="card-body">
           <p className="text-center">{props.post.body}</p>
+
+          <button
+            className="btn btn-outline-danger btn-sm"
+            onClick={() => props.deletePost(props.post.id)}
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>

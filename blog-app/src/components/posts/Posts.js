@@ -35,6 +35,12 @@ function Posts() {
     setToggle(false);
   };
 
+  const deletePost = (postId) => {
+    setPosts((prevPosts) => {
+      return prevPosts.filter((post) => post.id !== postId);
+    });
+  };
+
   return (
     <div className="container">
       <h2 className="display-4 text-center">My Post App</h2>
@@ -51,7 +57,7 @@ function Posts() {
 
       <div className="row">
         {posts.map((post) => (
-          <PostItem post={post} key={post.id} />
+          <PostItem post={post} key={post.id} deletePost={deletePost} />
         ))}
       </div>
 
