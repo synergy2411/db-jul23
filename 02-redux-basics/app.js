@@ -1,4 +1,4 @@
-const { createStore } = require("redux");
+const { createStore } = require("redux"); // CommonJS Module Pattern - Default in Node
 
 const initialState = {
   counter: 0,
@@ -6,6 +6,7 @@ const initialState = {
 // Reducer
 function rootReducer(state = initialState, action) {
   if (action.type === "INCREMENT") {
+    // return state.counter++;         // MUTATE THE STATE -> NEVER DO THAT
     return { counter: state.counter + 1 };
   } else if (action.type === "DECREMENT") {
     return { counter: state.counter - 1 };

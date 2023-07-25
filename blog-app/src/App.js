@@ -1,4 +1,5 @@
 import ClassBased from "./components/demo/ClassBased";
+import Counter from "./components/demo/Counter";
 import UseEffect from "./components/demo/UseEffect";
 import Posts from "./components/posts/Posts";
 import AuthContext from "./context/authContext";
@@ -11,7 +12,8 @@ function App() {
       {/* <UseEffect /> */}
       {/* <ClassBased /> */}
       <AuthContext.Provider value={{ isLoggedIn: true }}>
-        <Posts />
+        <Counter />
+        {/* <Posts /> */}
       </AuthContext.Provider>
     </div>
   );
