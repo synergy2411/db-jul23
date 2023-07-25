@@ -22,3 +22,13 @@
 - componentDidMount : useEffect(cb, [])
 - componentDidUpdate : useEffect(cb, [Dependency])
 - componentWillUnmount : useEffect(cb => CleanupFn, [Dependency])
+
+# to install redux
+
+- npm install @reduxjs/toolkit react-redux
+
+# to generate package.json
+
+- npm init -y
+
+- npm install
