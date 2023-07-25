@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import AuthContext from "../../../context/authContext";
+
 function PostItem(props) {
+  const context = useContext(AuthContext);
+
   return (
     <div className="col-4">
       <div className="card">
@@ -8,12 +13,14 @@ function PostItem(props) {
         <div className="card-body">
           <p className="text-center">{props.post.body}</p>
 
-          <button
-            className="btn btn-outline-danger btn-sm"
-            onClick={() => props.deletePost(props.post.id)}
-          >
-            Delete
-          </button>
+          {context.isLoggedIn && (
+            <button
+              className="btn btn-outline-danger btn-sm"
+              onClick={() => props.deletePost(props.post.id)}
+            >
+              Delete
+            </button>
+          )}
         </div>
       </div>
     </div>

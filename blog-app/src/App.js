@@ -1,6 +1,7 @@
 import ClassBased from "./components/demo/ClassBased";
 import UseEffect from "./components/demo/UseEffect";
 import Posts from "./components/posts/Posts";
+import AuthContext from "./context/authContext";
 
 function App() {
   return (
@@ -9,7 +10,9 @@ function App() {
       <hr />
       {/* <UseEffect /> */}
       {/* <ClassBased /> */}
-      <Posts />
+      <AuthContext.Provider value={{ isLoggedIn: true }}>
+        <Posts />
+      </AuthContext.Provider>
     </div>
   );
 }
