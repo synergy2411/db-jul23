@@ -1,27 +1,33 @@
 import React from "react";
+import PostItem from "./postItem/PostItem";
 
 // Stateless Component
 function Posts() {
-  let post = {
-    id: "p001",
-    title: "React 101",
-    body: "Awesome post",
-  };
+  let posts = [
+    {
+      id: "p001",
+      title: "React 101",
+      body: "Awesome post",
+    },
+    {
+      id: "p002",
+      title: "React Beginners",
+      body: "I like it",
+    },
+    {
+      id: "p003",
+      title: "Advance React",
+      body: "I luv this course",
+    },
+  ];
 
   return (
     <div className="container">
       <h2 className="display-4 text-center">My Post App</h2>
       <div className="row">
-        <div className="col-4">
-          <div className="card">
-            <div className="card-header">
-              <h5 className="text-center">{post.title.toUpperCase()}</h5>
-            </div>
-            <div className="card-body">
-              <p> {post.body}</p>
-            </div>
-          </div>
-        </div>
+        <PostItem post={posts[0]} />
+        <PostItem post={posts[1]} />
+        <PostItem post={posts[2]} />
       </div>
     </div>
   );
