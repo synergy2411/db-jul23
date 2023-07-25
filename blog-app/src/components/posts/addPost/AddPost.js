@@ -1,20 +1,30 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const AddPost = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredBody, setEnteredBody] = useState("");
+
+  const [isError, setIsError] = useState(false);
+
+  const bodyInputRef = useRef();
 
   const titleChangeHandler = (event) => setEnteredTitle(event.target.value);
   const bodyChangeHandler = (event) => setEnteredBody(event.target.value);
 
   const addPostClickHandler = (event) => {
     event.preventDefault();
-    let newPost = {
-      id: Math.round(Math.random() * 1000).toString(),
-      title: enteredTitle,
-      body: enteredBody,
-    };
-    props.addNewPost(newPost);
+    if (enteredTitle.trim() === "") {
+      setIsError(true);
+      return;
+    } else {
+      let newPost = {
+        id: Math.round(Math.random() * 1000).toString(),
+        title: enteredTitle,
+        body: bodyInputRef.current.value,
+      };
+      props.addNewPost(newPost);
+      setIsError(false);
+    }
   };
 
   return (
@@ -24,7 +34,7 @@ const AddPost = (props) => {
           <div className="card-body">
             <h4 className="text-center">Add New Post</h4>
             <form>
-              {/* title */}
+              {/* title - Controlled Component */}
               <div className="form-group mb-3">
                 <label htmlFor="title">Title :</label>
                 <input
@@ -34,15 +44,25 @@ const AddPost = (props) => {
                   value={enteredTitle}
                   onChange={titleChangeHandler}
                 />
+                {isError && (
+                  <p className="alert alert-danger">
+                    - Title is mandatoy field.
+                  </p>
+                )}
               </div>
-              {/* body */}
+              {/* body - Uncontrolled Component */}
               <div className="form-group mb-3">
                 <label htmlFor="body">Body</label>
-                <textarea
+                {/* <textarea
                   name="body"
                   className="form-control"
                   value={enteredBody}
                   onChange={bodyChangeHandler}
+                /> */}
+                <textarea
+                  name="body"
+                  className="form-control"
+                  ref={bodyInputRef}
                 />
               </div>
               {/* button */}

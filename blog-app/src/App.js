@@ -6,8 +6,8 @@ function App() {
     <div>
       <h1>App works!</h1>
       <hr />
-      <ClassBased />
-      {/* <Posts /> */}
+      {/* <ClassBased /> */}
+      <Posts />
     </div>
   );
 }
